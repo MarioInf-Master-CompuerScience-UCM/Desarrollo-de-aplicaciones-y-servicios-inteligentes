@@ -1,0 +1,56 @@
+En el presente proyecto se han llevado a cabo los siguientes pasos:
+
+    1º Traducción completa del fichero doctor.txt para la configuración del lenguaje natural.
+    
+    2º Se ha analizado completamente el codigo del fichero eliza.py con el objetivo de entender su 
+       funcionamiento. Para una mejor comprensión se ha desgranado y comentado en la medida de lo
+       que se ha considerado oportuno.
+
+    3º Se han realizado una gran cantidad de modificaciones el fichero doctor.txt con el objetivo
+       de asemejar más la configuración del lenguaje al castellado. Entre otras cosas, se han editado las
+       siguientes claves:
+        
+        +Clave xnonde: 
+            Se han añadido nuevas respuestas.
+
+        +Clave perdon (sorry): 
+            Se han añadido las claves perdona, perdoname. disculpa, disculpame, lamento, siento.
+            Se han añadido nuevas respuestas.
+
+        +Clave recuerdo (remember):
+            Se han añadido las claves recordar y recuerdas
+        
+        +Clave si (yes):
+            Se han añadido las claves claro, odvio y supongo
+            Se han añadido nuevas respuestas.
+        
+        +Clave sueño (dream):
+            Se han añadido las claves señaba y soñe
+        
+        +Clave quizas (maybe):
+            Se han añadido las claves puede, tal, mejor
+
+        +Clave nombre (name):
+            Se ha añadido la clave llamo.
+
+        +Clave xforeign:
+            Se han añadido la claves idioma e idiomas.
+
+        +Clave hola (hello):
+            Se han añadido la claves buenos, buenas y como.
+
+        +Clave ordenador (computer):
+            Se han añadido la claves computador, computadora y pc.
+
+        +Nueva clave son
+
+        +Nueva clave es
+
+        +Nueva clave eras
+
+        +Clave Yo (I):
+            Se ha eliminado la clave de referencia.
+            Se han añadido las claves desearia, estoy, estaba, creo, soy, puedo y siento.
+        
+        +Clave puedes (can):
+            Se ha creado la clave puedo.

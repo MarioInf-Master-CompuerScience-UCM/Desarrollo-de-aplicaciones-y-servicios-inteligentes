@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    
+  <!-- LAS COSAS QUE LE GUSTA A ALGUIEN | Ej. A el le gusta caminar por el parque -->
+  <category>
+    <pattern>A <set>pronombre</set> <set>pronombre</set> GUSTA <set>conjugar</set> *</pattern>
+    <template>
+      <think>
+        <set var="pronombre1"><star/></set>
+        <set var="pronombre2"><star index="2"/></set>
+        <set var="verbo"><star index="3"/></set>
+        <set var="objeto"><star index="4"/></set>
+        
+        <set var="conjuga"><map name="conjugar2conjuga"><get var="verbo"/></map></set>
+        <set var="pronombre1Map"><map name="pronombreopuesto"><get var="pronombre1"/></map></set>
+        <set var="pronombre2Map"><map name="pronombreopuesto"><get var="pronombre2"/></map></set>
+        
+        <set var="pattern1">A QUIEN LE GUSTA <get var="verbo"/> <get var="objeto"/></set>
+        <set var="pattern2">QUE <get var="pronombre2"/> GUSTA A <get var="pronombre1"/></set>
+        <set var="respuesta">A <get var="pronombre1"/> <get var="pronombre2"/> gusta <get var="verbo"/> <get var="objeto"/>.</set>
+      </think>
+        De acuerdo, intentare recordarlo :)
+      <learn>
+        <category>
+          <pattern><eval><get var="pattern1"/></eval></pattern>
+          <template>A <eval><get var="pronombre1Map"/></eval>.</template>
+        </category>
+        <category>
+          <pattern><eval><get var="pattern2"/></eval></pattern>
+          <template><eval><get var="respuesta"/></eval></template>
+        </category>
+      </learn>
+    </template>
+  </category>
+  
+
+  <!-- LAS COSAS QUE LE GUSTA A LA PERSONA NOMBRADA | Ej. A Juan le gusta practicar natación -->
+  <category>
+    <pattern>A <set>nombre</set> LE GUSTA <set>conjugar</set> *</pattern>
+    <template>
+      <think>
+        <set var="nombre"><star/></set>
+        <set var="verbo"><star index="2"/></set>
+        <set var="objeto"><star index="3"/></set>
+       
+        <set var="verboMap"><map name="conjugar2conjuga"><get var="verbo"/></map></set>
+
+        <set var="pattern1">A QUIEN LE GUSTA <get var="verbo"/> <get var="objeto"/> ^</set>
+        <set var="pattern2">QUE LE GUSTA A <get var="nombre"/> ^</set>
+        <set var="pattern3">QUIEN <get var="verboMap"/> <get var="objeto"/> ^</set>
+        <set var="respuesta1y2">A <get var="nombre"/> le gusta <get var="verbo"/> <get var="objeto"/>.</set>
+        <set var="respuesta3"><get var="nombre"/> <get var="verbo"/> <get var="objeto"/>.</set>
+      </think>
+        De acuerdo, intentare recordarlo :)
+      <learn>
+        <category>
+          <pattern><eval><get var="pattern1"/></eval></pattern>
+          <template><eval><get var="respuesta1y2"/></eval></template>
+        </category>
+        <category>
+          <pattern><eval><get var="pattern2"/></eval></pattern>
+          <template><eval><get var="respuesta1y2"/></eval></template>
+        </category>
+        <category>
+          <pattern><eval><get var="pattern3"/></eval></pattern>
+          <template><eval><get var="respuesta3"/></eval></template>
+        </category>
+      </learn>
+    </template>
+  </category>
+  
+  
+  
+   <!-- LAS COSAS QUE LE GUSTA A UN FAMILIAR | Ej. A mi hermana le gusta correr por el parque --> 
+  <category>
+    <pattern>A <set>pronombre</set> <set>nombrefamiliar</set> LE GUSTA <set>conjugar</set> *</pattern>
+    <template>
+      <think>
+        <set var="posesivo"><star/></set>
+        <set var="nombreFamiliar"><star index="2"/></set>
+        <set var="verbo"><star index="3"/></set>
+        <set var="objeto"><star index="4"/></set>
+        
+        <set var="conjuga"><map name="conjugar2conjuga"><get var="verbo"/></map></set>
+        <set var="posesivoMap"><map name="pronombreopuesto"><get var="posesivo"/></map></set>
+        <set var="pronombre2Map"><map name="pronombreopuesto"><get var="nombreFamiliar"/></map></set>
+        
+        <set var="pattern1">A QUIEN LE GUSTA <get var="verbo"/> <get var="objeto"/> ^</set>
+        <set var="pattern2">QUE LE GUSTA A <get var="posesivo"/> <get var="nombreFamiliar"/> ^</set>
+        <set var="respuesta">A <get var="posesivoMap"/> <get var="nombreFamiliar"/> le gusta <get var="verbo"/> <get var="objeto"/>.</set>
+      </think>
+        De acuerdo, intentare recordarlo :)
+      <learn>
+        <category>
+          <pattern><eval><get var="pattern1"/></eval></pattern>
+          <template>A <eval><get var="pronombre1Map"/></eval>.</template>
+        </category>
+        <category>
+          <pattern><eval><get var="pattern2"/></eval></pattern>
+          <template><eval><get var="respuesta"/></eval></template>
+        </category>
+      </learn>
+    </template>
+  </category>
+  
+  
+  
+</aiml>

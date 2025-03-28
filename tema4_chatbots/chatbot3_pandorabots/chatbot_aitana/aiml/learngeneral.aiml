@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+  <!-- COSAS RESPECTO A UNA PERSONA NOMBRADA | Ej. Carlos come macarrones -->
+  <category>
+    <pattern><set>nombre</set> <set>conjuga</set> *</pattern>
+    <template>
+      <think>
+        <set var="nombre"><star/></set>
+        <set var="verbo"><star index="2"/></set>
+        <set var="objeto"><star index="3"/></set>
+       
+        <set var="verboMap"><map name="conjugar2conjuga"><get var="verbo"/></map></set>
+
+        <set var="pattern">QUIEN <get var="verbo"/> <get var="objeto"/> ^</set>
+        <set var="respuesta"><get var="nombre"/> <get var="verbo"/> <get var="objeto"/>.</set>
+      </think>
+        De acuerdo, intentare recordarlo :)
+      <learn>
+        <category>
+          <pattern><eval><get var="pattern"/></eval></pattern>
+          <template><eval><get var="respuesta"/></eval></template>
+        </category>
+      </learn>
+    </template>
+  </category>
+  
+ 
+   <!-- COSAS RESPECTO A UNA PERSONA NOMBRADA EN UN LUGAR | Ej. juan entrena boxeo en París -->
+  <category>
+    <pattern><set>nombre</set> <set>conjuga</set> ^ EN *</pattern>
+    <template>
+      <think>
+        <set var="nombre"><star/></set>
+        <set var="verbo"><star index="2"/></set>
+        <set var="objeto"><star index="3"/></set>
+        <set var="lugar"><star index="4"/></set>
+       
+        <set var="verboMap"><map name="conjugar2conjuga"><get var="verbo"/></map></set>
+
+        <set var="pattern1">QUIEN <get var="verbo"/> <get var="objeto"/> EN <get var="lugar"/> ^</set>
+        <set var="pattern2">DONDE <get var="verbo"/> <get var="objeto"/> <get var="nombre"/> ^</set>
+        <set var="respuesta1"><get var="nombre"/> <get var="verbo"/> <get var="objeto"/>.</set>
+        <set var="respuesta2"><get var="nombre"/> <get var="verbo"/> <get var="objeto"/> en <get var="lugar"/>.</set>
+      </think>
+        De acuerdo, intentare recordarlo :)
+      <learn>
+        <category>
+          <pattern><eval><get var="pattern1"/></eval></pattern>
+          <template><eval><get var="respuesta1"/></eval></template>
+        </category>
+        <category>
+          <pattern><eval><get var="pattern2"/></eval></pattern>
+          <template><eval><get var="respuesta2"/></eval></template>
+        </category>
+      </learn>
+    </template>
+  </category>
+  
+  
+     <!-- COSAS RESPECTO A UNA SEGUNDA PERSONAR | Ej. A mi perro le duele la barriga -->
+  <category>
+    <pattern>A <set>pronombre</set> * LE <set>conjuga</set> * </pattern>
+    <template>
+      <think>
+        <set var="pronombre"><star index="1"/></set>
+        <set var="nombre"><star index="2"/></set>
+        <set var="verbo"><star index="3"/></set>
+        <set var="objeto"><star index="4"/></set>
+       
+        <set var="verboMap"><map name="conjugar2conjuga"><get var="verbo"/></map></set>
+        <set var="pronombreMap"><map name="pronombreopuesto"><get var="pronombre"/></map></set>
+
+        <set var="pattern1">A QUIEN LE <get var="verbo"/> <get var="objeto"/> </set>
+        <set var="pattern2">QUE LE <get var="verbo"/> A <get var="pronombre"/> <get var="nombre"/> ^</set>
+        <set var="respuesta"> A <get var="pronombreMap"/> <get var="nombre"/> le <get var="verbo"/> <get var="objeto"/>.</set>
+      </think>
+        De acuerdo, intentare recordarlo :)
+      <learn>
+        <category>
+          <pattern><eval><get var="pattern1"/></eval></pattern>
+          <template><eval><get var="respuesta"/></eval></template>
+        </category>
+        <category>
+          <pattern><eval><get var="pattern2"/></eval></pattern>
+          <template><eval><get var="respuesta"/></eval></template>
+        </category>
+      </learn>
+    </template>
+  </category>
+  
+  
+      <!-- COSAS RESPECTO A SEGUNDAS PERSONAS 2 | Ej. Mi perro corre por el parque -->
+  <category>
+    <pattern><set>pronombre</set> * <set>conjuga</set> * </pattern>
+    <template>
+      <think>
+        <set var="pronombre"><star index="1"/></set>
+        <set var="nombre"><star index="2"/></set>
+        <set var="verbo"><star index="3"/></set>
+        <set var="objeto"><star index="4"/></set>
+       
+        <set var="verboMap"><map name="conjugar2conjuga"><get var="verbo"/></map></set>
+        <set var="posesivoMap"><map name="pronombreopuesto"><get var="pronombre"/></map></set>
+
+        <set var="pattern">QUIEN <get var="verbo"/> <get var="objeto"/> </set>
+        <set var="respuesta"><get var="posesivoMap"/> <get var="nombre"/> <get var="verbo"/> <get var="objeto"/>.</set>
+      </think>
+        De acuerdo, intentare recordarlo :)
+      <learn>
+        <category>
+          <pattern><eval><get var="pattern"/></eval></pattern>
+          <template><eval><get var="respuesta"/></eval></template>
+        </category>
+
+      </learn>
+    </template>
+  </category>
+  
+
+</aiml>

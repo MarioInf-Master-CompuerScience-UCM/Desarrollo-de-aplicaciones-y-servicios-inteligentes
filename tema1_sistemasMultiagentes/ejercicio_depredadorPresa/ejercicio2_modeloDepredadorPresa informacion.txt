@@ -1,0 +1,154 @@
+## Descripción del modelo
+
+El presente proyecto busca simular el funcionamiento de un modelo depredador-presa mediante la implementación de agentes. Dicho modelo se caracteriza por poner en contraposición el numero de individuos que se encuentran en dos o más grupos, ejerciendo al menos uno de ellos el rol de depredador y otro el rol de presa.
+
+
+### Descripción de los agentes
+
+En el presente modelo se incluyen los siguientes agentes:
+
++ Lobos: Ejercen el rol de depredador y se alimenta de de los conejos. Tienne la capacidad de reproducirse y su supervivencia esta ligada a su energía.
+
++ Conejos: Ejercen el rol de presa y se alimenta de de la hierba. Tienen la capacidad de reproducirse y su supervivencia esta ligada tanto a su energía como a la posibilidad de ser cadazos por un lobo.
+
++ Hierba: Representan el alimento principal para los conejos. No tienen la capacidad de reproducirse y su crecimiento depende del clima.
+
++ Clima: Influye en la cantidad de alimento disponible para las presas. Esto se basa en el estado del clima en cada comento, el cual varía de forma aleatoria. 
+
+### Acciones llevadas a cabo en el modelo
+
+#### Movimiento
+
+Los agentes que representan tano a los conejos como a los lobos se moverán de manera aleatoria en cada uno de los ticks producidos a lo largo de la simulación. Cada vez que un agente se mueve, este consume una parte de su energía.
+
+El tiempo de vida que cada uno de los agentes lleva existiendo se mide por el número de ticks que han pasado desde que apareció en el escenario, por lo que cada vez que se produce el movimiento de un determinado agente, ese incrementará el valor de su tiempo de vida.
+
+#### Conejos comen hierba
+
+Los conejos se alimentan en base la hierba que se encuentra en el escenario. Cuando el nivel de energía de un conejo esta por debajo de un determinado humbral y este se encuentra en una zona donde existe hierba, podrá comerla para recargar su energía con una cantidad proporcionar a la energía que disponía dicha hierba.
+
+Los conejos únicamente pueden comer la hierba que se encuentra en el mismo sitio que ellos. Cuando esto se lleva a cabo, la hierba que existía es eliminada y se sistutuye por una zona de tierra.
+
+#### Lobos comen conejos
+
+Los lobos se alimentan mediante la caza de conejos. Cuando el nivel de energía de un lobo esta por debajo de un determinado humbral y este se encuentra en la misma zona que al menos un conejo, podrá cazarlo para recargar su energía con una cantidad proporcionar a la energía que disponía dicho conejo.
+
+A veces cazar no es algo tan sencillo, por lo que cuando un lobo lo intenta dispone de una posibilidad para lobrarlo. En caso de que no haya suerte, el lobo habrá perdido su oportinidad, pero podrá volver a intentarlo en el siguiente tick.
+
+
+#### Muerte por falta de alimento
+
+Cuando un agente, ya sea un conejo o un lobo, reduce tanto su nivel de energía que este llega a cero, dicho agente morirá por causas naturales. Esta es una manera de establecer un balance entre la cantidad de hierba, conejos y lobos que existen en el escenario.
+
+
+#### Reproducción
+
+Tanto los conejos como los lobos pueden reproducirse, dando así nuevos ejemplares del mismo tipo y aumentando el número de individuos. Para que esto se lleve a cabo deben cumplirse la condición de que el nivel de energía que contiene el lobo o conejo que se quiere reproducir debe ser mañor a un determinado umbral.
+
+Cundo se produce la reproducción, el agente que la realice perderá buena parte de su energía actual (la cual debe ser siempre menor a la energía umbral indicada anteriormente). Por otra parte, el nuevo agente aparecerá en el escenario con un porcentaje del nivel de nergía máximo que puede llegar a tener.
+
+Además de esto, para que un agente pueda reproducirse debe haber vivido lo suficiente, es decir, su cantidad de tiempo vivido debe ser mañor a un valor determinado. Los agentes no se reproducen siempre que se cumpla lo indicado hasta ahora, sino que tienen una probabilidad para llevarlo a cabo, la cual diferente para cada tipo.
+
+
+#### Actualización del clima
+
+El clima es un factor importante dentro de los modelos depredador-presa, ya que suele influir directamente sobre la disponibilidad de alimento de alguno de sus integrantes. En nuestro caso, el clima controla directamente la cantidad de energía que tiene la hierba de la cual se nutren los conejos.
+
+Se han configurado un total de cuatro tipos diferentes de clima, los cuales pueden actualizarse cada un número de ticks determinados. La elección del tipo de clima a aplciar cuando se actualiza se realzia de forma aleatoria, pudiendo seleccionarse incluso el mismo clima de antes de llevar a cabo la actualización.
+
+Tipos de clima:
+
++ Soleado: La energía de la hierba aumenta un punto por cada tick.
+
++ Lluvioso: La energía de la hierba aumenta dos puntos por cada tick.
+
++ Frío: La energía de la hierba no aumentan ni disminuye por cada tick.
+
++ Seco: La energía de la hierba disminuye un punto por cada tick.
+
+
+#### Crecimeinto de hierba
+
+El crecimiento de la hierba se encuentra directamente asociado con la energía contenida en la misma en ese preciso momento. La energía que contiene la hierba siempre será mayor o igual que cero y menor o igual que un valor máximo indicado.
+
+En cada uno de los tick producidos en el escenario, el valor contenido por la energía de la hierba varía en torno al clima. Para hacerlo más entendible de forma visual se han establecidos diferentes tipos de hierba:
+
++ Suelo (la energía es 0, por lo que no puede ser consumida por los conejos).
++ Hierba seca.
++ Hierba pequeña.
++ Hierba grande.
+
+### Variables globales
+
+#### Variables asociadas a los agentes de tipo lobo:
+
++ **wolfColour:** Color de los agentes de tipo lobo.
++ **wolfSize** Tamaño de los agentes de tipo lobo.
++ **wolfMaxEnergy:** Energía maxima que pueden tener los agentes de tipo lobo.
++ **wolfEnergyEatThreshold:** Valor maximo de energía que deben tener los agentes de tipo lobo para poder comer.
++ **wolfEnergyReproduceThreshold:** Valor mínimo de energía que deben tener los agentes de tipo lobo para poder reproducirse.
++ **wolfEnergyReproduceCost:** Reducción de energía aplicada a los agentes de tipo lobo cuando se reproducen.
++ **wolfReproduceProbability:** Posibilidad de reproducción que tienen los agentes de tipo lobo (el valor se establece entre 0 y 100).
++ **wolfEnergyBorned:** Valor inicial de la energía que tienen los agentes de tipo lobo cuando estos aparecen por primera vez en el escenario como resultado de la reproducción.
++ **wolfMinTimeReproduce:** Valor mínimo del tiempo de vida que deben tener los agentes de tipo lobo para poder reproducirse.
++ **wolfMovement:** Número de casillas que se mueven los agentes de tipo lobo por cada tick producido en el escenario.
++ **wolfHuntPosibility:** Posibilidad que tienen los agentes de tipo lobo para cazar exitosamente a los agente de tipo conejo.
++ **wolfEnergyMoveCost:** Valor que se reduce la energía de los agentes de tipo lobo cada vez que estos se mueven por el escenario.
+
+#### Variables asociadas a los agentes de tipo conejo:
+
++ **rabbitColour:** Color de los agentes de tipo conejo.
++ **rabbitSize:** Tamaño de los agentes de tipo conejo.
++ **rabbitMaxEnergy:** Energía maxima que pueden tener los agentes de tipo conejo.
++ **rabbitEnergyEatThreshold:** Valor maximo de energía que deben tener los agentes de tipo conejo para poder comer.
++ **rabbitEnergyReproduceThreshold:** Valor mínimo de energía que deben tener los agentes de tipo conejo para poder reproducirse.
++ **rabbitEnergyReproduceCost:** Reducción de energía aplicada a los agentes de tipo conejo cuando se reproducen.
++ **rabbitReproduceProbability:** Posibilidad que tienen los agentes de tipo conejo para cazar exitosamente a los agente de tipo conejo.
++ **rabbitEnergyBorned:** Valor inicial de la energía que tienen los agentes de tipo conejo cuando estos aparecen por primera vez en el escenario como resultado de la reproducción.
++ **rabbitMinTimeReproduce:** Valor mínimo del tiempo de vida que deben tener los agentes de tipo conejo para poder reproducirse.
++ **rabbitMovement:** Número de casillas que se mueven los agentes de tipo conejo por cada tick producido en el escenario
++ **rabbitEnergyMoveCost:** Valor que se reduce la energía de los agentes de tipo conejo cada vez que estos se mueven por el escenario.
+
+#### Variables asociadas a los bloques que componen el escenario:
+
++ **grassBigColour:** Color de los bloques del escenario catalogados como hierba grande.
++ **grassBigMaxEnergy:** Valor maximo de energía que pueden contener los bloques del escenario para ser catalogados como hierba grande.
++ **grassSmallColour:** Color de los bloques del escenario catalogados como hierba pequeña.
++ **grassSmallMaxEnergy:** Valor maximo de energía que pueden contener los bloques del escenario para ser catalogados como hierba pequeña.
++ **grassDryColour:** Color de los bloques del escenario catalogados como hierba seca.
++ **grassDryMaxEnergy:** Valor maximo de energía que pueden contener los bloques del escenario para ser catalogados como hierba seca.
++ **goundColour:** Color de los bloques del escenario catalogados como hierba suelo.
++ **goundDryMaxEnergy:** Valor maximo de energía que pueden contener los bloques del escenario para ser catalogados como suelo.
+
+#### Variables asociadas a los agentes de tipo clima:
+
++ **weatherPosX:** Posición del agente de tipo clima en la cordenada X.
++ **weatherPosY:** Posición del agente de tipo clima en la cordenada Y.
++ **weatherSize:** Tamaño del agente de tipo clima.
++ **weatherUpdateFrecuency:** Fecuencia de actualización del clima medida en ticks.
++ **sunny:** Valor numérico para identificar el clima de tipo soleado.
++ **sunnyColour:** Color del agente cuando el tipo de clima es soleado.
++ **sunnyRegrowValue:** Valor de variación de la energía contenida en los bloques que contienen el suelo y representan la hierba cuando el clima es soleado.
++ **rainy:** Valor numérico para identificar el clima de tipo lluvioso.
++ **rainyColour:** Color del agente cuando el tipo de clima es lluvioso.
++ **rainyRegrowValue:** Valor de variación de la energía contenida en los bloques que contienen el suelo y representan la hierba cuando el clima es lluvioso.
++ **warm:** Valor numérico para identificar el clima de tipo seco.
++ **warmColour:** Color del agente cuando el tipo de clima es seco.
++ **warmRegrowValue:** Valor de variación de la energía contenida en los bloques que contienen el suelo y representan la hierba cuando el clima es seco.
++ **cool:** Valor numérico para identificar el clima de tipo frío.
++ **coolColour:** Color del agente cuando el tipo de clima es frío.
++ **coolRegrowValue:** Valor de variación de la energía contenida en los bloques que contienen el suelo y representan la hierba cuando el clima es frío.
++ **numPosibleStates:** Numero de posibles estados del clima (empleado para hacer el cambio aleatorio entre dichos estados).
+
+#### Variables asociadas a la ejecución de la simulación:
+
++ **stepLimit:** Número máximo de tick que se producirán en la simulación. Si se pone el valor -1 no se aplicará este límite.
++ **maxRabbits:** Número máximo de conejos que se producirán en la simulación. Si se pone el valor -1 no se aplicará este límite.
++ **maxwolves:** Número máximo de lobos que se producirán en la simulación. Si se pone el valor -1 no se aplicará este límite.
++ **functionReproduce_A:** Valor constante de la función exponencial que regula la reproducción en base al número de ejempalares de la misma clase de agentes. *Esta función es de la forma f(x) = a^x * ReproduceProbability, donde a<0*. Esta funcionalidad no ha termiando de ser implementada de manera activa en el modelo.
+
+
+
+
+
+

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+  <!-- MI COSAS FAVORITAs | Ej. Mi comida favorita es el arroz -->
+  <category>
+    <pattern>MI * <set>favorito</set> <set>ser</set> *</pattern>
+    <template>
+     <think>
+      <set var="elemento1"><star index="1"/></set>
+      <set var="favorito"><star index="2"/></set>
+      <set var="ser"><star index="3"/></set>
+      <set var="elemento2"><star index="4"/></set>
+      
+      <set var="pattern1">CUAL ES MI <get var="elemento1"/> <get var="favorito"/> ^</set>
+      <set var="template1">Tu <get var="elemento1"/> <get var="favorito"/> <get var="ser"/> <get var="elemento2"/>.</set>
+     </think>
+    De acuerdo, intentare recordarlo :)
+     <learn>
+        <category>
+          <pattern><eval><get var="pattern1"/></eval></pattern>
+          <template><eval><get var="template1"/></eval></template>
+        </category>
+      </learn>
+    </template>
+  </category>
+  
+  
+  <!-- LAS COSAS FAVORITAS DE SEGUNDOS | Ej. La comida favorita de mi madre es el arroz -->
+  <!--FIXED template1-->
+  <category>
+    <pattern><set>articulo</set> * <set>favorito</set> <set>preposicion</set> <set>person</set> * <set>ser</set> *</pattern>
+    <template>
+     <think>
+      <set var="articulo"><star index="1"/></set>
+      <set var="elemento1"><star index="2"/></set>
+      <set var="favorito"><star index="3"/></set>
+      <set var="preposicion"><star index="4"/></set>
+      <set var="posesive"><star index="5"/></set>
+      <set var="elemento2"><star index="6"/></set>
+      <set var="ser"><star index="7"/></set>
+      <set var="elemento3"><star index="8"/></set>
+      
+      <set var="posesiveMap"><map name="pronombreopuesto"><get var="posesive"/></map></set>
+      
+      <set var="pattern1">CUAL ES <get var="articulo"/> <get var="elemento1"/> <get var="favorito"/> <get var="preposicion"/> <get var="person"/> <get var="elemento2"/> ^</set>
+      <set var="template1"><get var="articulo"/> <get var="elemento1"/> <get var="favorito"/> <get var="preposicion"/> <get var="posesiveMap"/> <get var="elemento2"/>  <get var="ser"/> <get var="elemento3"/>.</set>
+     </think>
+    De acuerdo, intentare recordarlo :)
+     <learn>
+        <category>
+          <pattern><eval><get var="pattern1"/></eval></pattern>
+          <template><eval><get var="template1"/></eval></template>
+        </category>
+      </learn>
+    </template>
+  </category>
+  
+
+  <!-- LAS COSAS FAVORITAS DE TERCEROS | Ej. La comida favorita de Fernando es el arroz -->
+  <category>
+    <pattern><set>articulo</set> * <set>favorito</set> <set>preposicion</set> * <set>ser</set> *</pattern>
+    <template>
+     <think>
+      <set var="articulo"><star index="1"/></set>
+      <set var="elemento1"><star index="2"/></set>
+      <set var="favorito"><star index="3"/></set>
+      <set var="preposicion"><star index="4"/></set>
+      <set var="elemento2"><star index="5"/></set>
+      <set var="ser"><star index="6"/></set>
+      <set var="elemento3"><star index="7"/></set>
+      
+      <set var="pattern1">CUAL ES <get var="articulo"/> <get var="elemento1"/> <get var="favorito"/> <get var="preposicion"/> <get var="elemento2"/> ^</set>
+      <set var="template1"><get var="articulo"/> <get var="elemento1"/> <get var="favorito"/> <get var="preposicion"/> <get var="elemento2"/> <get var="ser"/> <get var="elemento3"/>.</set>
+     </think>
+    De acuerdo, intentare recordarlo :)
+     <learn>
+        <category>
+          <pattern><eval><get var="pattern1"/></eval></pattern>
+          <template><eval><get var="template1"/></eval></template>
+        </category>
+      </learn>
+    </template>
+  </category>
+
+
+</aiml>

@@ -1,0 +1,460 @@
+initial: ¿Cómo estas? Por favor cuentame tus problemas.
+initial: Buenos días. ¿Cuál es el tema sobre el que quieres hablar?.
+initial: Hola. Me gustaría que me dijeras aquello que te preocupa.
+final: Adios. Gracias por hablar conmigo.
+final: Hasta luego. Espero te ahya servido de ayuda.
+final: Ten una buén días y no dudes en volver a hbalar conigo.
+quit: adios
+quit: chao
+quit: hasta luego
+quit: hasta pronto
+quit: hasta la vista
+quit: hasta mañana
+quit: te veo luego
+quit: ten un buen dia
+pre: no no
+pre: no no puedo
+pre: no no podre
+pre: recordar 
+pre: soñado soñado
+pre: sueño sueños
+pre: quizas puede
+pre: como que
+pre: cuando que
+pre: ciertamente si
+pre: maquina ordenador
+pre: ordenadores ordenador
+pre: era era
+pre: eres eres
+pre: soy soy
+pre: igual similar
+post: estoy estas
+post: tu mi
+post: yo tu
+post: yo tu
+post: tu yo
+post: yo tu
+post: tu yo
+post: mi tu
+post: soy eres
+synon: creer sentir pensar desear
+synon: familia madre mama padre papa germana hermano esposa hijos hijo
+synon: desear querer necesitar
+synon: triste infeliz deprimido enfermo
+synon: feliz exaltado contento mejor
+synon: no puedes
+synon: todo todos
+synon: ser soy es son fueron
+synon: creo pienso espero 
+synon: si tambien
+key: xnone
+  decomp: *
+    reasmb: No estoy segura de entenderte completamente.
+    reasmb: Continua por favor.
+    reasmb: Por favor, ¿podrías repetirlo?. Creo que no te he entendido correctamente.
+    reasmb: ¿Qué te suguiere eso?
+    reasmb: ¿Te atreves a hablar sobre estas cosas?
+key: perdon
+  decomp: *
+    reasmb: Por favor, no te disculpes.
+    reasmb: No te preocupes, no necesitas disculparte.
+    reasmb: Disculparse no es necesario.
+    reasmb: Te he dicho que las disculpas no son necesarias.
+    reasmb: No necesitas disculparse, continuemos hablando.
+key: perdona
+  decomp: *
+    reasmb: goto perdon
+key: perdoname
+  decomp: *
+    reasmb: goto perdon
+key: disculpa
+  decomp: *
+    reasmb: goto perdon
+key: disculpame
+  decomp: *
+    reasmb: goto perdon
+key: lamento
+  decomp: *
+    reasmb: goto perdon
+key: siento
+  decomp: * lo siento *
+    reasmb: goto perdon
+  decomp: * siento haber *
+    reasmb: goto perdon
+key: recuerdo 5
+  decomp: * recuerdo *
+    reasmb: ¿Piensas a menudo en (2) ?
+    reasmb: ¿Pensar en (2) te trae a la mente algo más?
+    reasmb: ¿Qué más recuerdas?
+    reasmb: ¿Por que rescuerdas (2) ?
+    reasmb: ¿Qué le recuerda a (2) en la situación actual?
+    reasmb: ¿Cuál es la conexión entre yo y (2) ?
+key: recordar 5
+  decomp: *
+    reasmb: goto recuerdo
+key: recuerdas 5  
+  decomp: * ¿ * recuerdas * ? *
+    reasmb: ¿Por que crees que recuerdo (2) en este momento?
+    reasmb: ¿Por qué crees que debería recordar (2) ahora?
+    reasmb: ¿Qué pasa con (2) ?
+    reasmb: ¿Mencionaste (2) ?
+    reasmb: goto que
+key: si 3
+  decomp: * si *
+    reasmb: ¿Crees que es probable que (2) ?
+    reasmb: ¿Deseas eso (2) ?
+    reasmb: ¿Qué sabes sobre (2) ?
+    reasmb: Realmente, si (2) ?
+    reasmb: ¿Por que crees que (2) ?
+key: claro
+  decomp: *
+    reasmb: goto si
+key: odvio
+  decomp: *
+    reasmb: goto si
+key: supongo
+  decomp: *
+    reasmb: goto si
+key: sueño 4
+  decomp: * sueño *
+    reasmb: ¿En serio, (2) ?
+    reasmb: ¿Alguna vez has fantaseado (2) mientras estabas despierto?
+    reasmb: ¿Alguna vez has soñado (2) antes?
+    reasmb: ¿Qué te sugiere ese sueño?
+    reasmb: ¿Sueñas a menudo?
+    reasmb: ¿Qué personas aparecen en tus sueños?
+    reasmb: ¿Crees que los sueños tienen algo que ver con tus problemas?
+key: soñaba
+  decomp: *
+    reasmb: goto sueño
+key: soñe
+  decomp: *
+    reasmb: goto sueño
+key: quizas
+  decomp: *
+    reasmb: No parece muy seguro.
+    reasmb: ¿Por qué el tono incierto?
+    reasmb: ¿No puedes ser más positivo?
+    reasmb: ¿No estás seguro?
+    reasmb: ¿No lo sabes?
+key: puede
+  decomp: *
+    reasmb: goto quizas
+key: tal
+  decomp: * tal vez *
+    reasmb: goto quizas
+key: mejor
+  decomp: * a lo mejor *
+    reasmb: goto quizas
+key: nombre 15
+  decomp: *
+    reasmb: No estoy interesada en nombres
+    reasmb: Como te he dicho antes, no me preocupan los nombres. Por favor, continua.
+key: llamo
+  decomp: * me llamo *
+    reasmb: goto nombre
+key: xforeign
+  decomp: *
+    reasmb: Lo siento, pero únicamente hablo español.
+key: idioma
+  decomp: *
+    reasmb: goto xforeign  
+    reasmb: Ya te he dicho que no hablo otros idiomas, lo siento.
+key: idiomas
+  decomp: *
+    reasmb: goto xforeign  
+    reasmb: Ya te he dicho que no hablo otros idiomas, lo siento.
+key: aleman
+  decomp: *
+    reasmb: goto xforeign
+    reasmb: Te lo dije antes, no entiendo aleman, perdona.
+key: frances
+  decomp: *
+    reasmb: goto xforeign
+    reasmb: Te lo dije antes, no entiendo frances, perdona.
+key: italiano
+  decomp: *
+    reasmb: goto xforeign
+    reasmb: Te lo dije antes, no entiendo italiano, perdona.
+key: español
+  decomp: *
+    reasmb: goto xforeign
+    reasmb: Te lo dije antes, no entiendo español, perdona.
+key: hola
+  decomp: *
+    reasmb: ¿Cómo estás? Por favor cuentame tus problemas
+    reasmb: Hola. ¿Cuáles son tus problemas?
+key: buenos
+  decomp: * buenos dias *
+    reasmb: goto hola
+key: buenas
+  decomp: * buenas tardes *
+    reasmb: goto hola
+  decomp: * buenas noches *
+    reasmb: goto hola
+key: como
+  decomp: * ¿ como estas ? *
+    reasmb: goto hola
+key: ordenador 50
+  decomp: *
+    reasmb: ¿Te preocupan los ordenadores?
+    reasmb: ¿Por qué mencionas las computadoras?
+    reasmb: ¿Qué crees que tienen que ver las máquinas con tu problema?
+    reasmb: ¿No crees que las computadoras pueden ayudar a las personas?
+    reasmb: ¿Qué te preocupa de las máquinas?
+    reasmb: ¿Qué piensas de las máquinas?
+key: computador
+  decomp: *
+    reasmb: goto ordenador
+key: computadora
+  decomp: *
+    reasmb: goto ordenador
+key: pc
+  decomp: *
+    reasmb: goto ordenador
+key: soy
+  decomp: * ¿ * soy * ? *
+    reasmb: ¿Crees que eres (2) ?
+    reasmb: ¿Te gustaría ser (2) ?
+    reasmb: ¿Te gustaría que te dijera que eres (2) ?
+    reasmb: ¿Qué significaría si fueras (2) ??
+    reasmb: goto que
+  decomp: *
+    reasmb: ¿Por qué dices 'soy'?
+    reasmb: No entiendo eso.
+key: eres
+  decomp: * ¿ * eres * ? *
+    reasmb: ¿Por qué te interesa saber si soy (2) o no?
+    reasmb: ¿Preferirías que yo no fuera (2) ?
+    reasmb: Tal vez estoy (2) en tus fantasías.
+    reasmb: ¿A veces piensas que soy (2) ?
+    reasmb: goto que
+key: son
+  decomp: * son *
+    reasmb: ¿Pensaste que podrían no ser (2) ?
+    reasmb: ¿Te gustaría que no fueran (2) ?
+    reasmb: ¿Y si no fueran (2) ?
+    reasmb: Posiblemente lo sean (2) .
+key: es
+  decomp: *
+  decomp: * ¿ * son * ? *
+    reasmb: ¿Pensaste que podría no ser (2) ?
+    reasmb: ¿Te gustaría que no fuera (2) ?
+    reasmb: ¿Y si no fuera (2) ?
+    reasmb: Posiblemente sea (2) .
+key: tus
+  decomp: * tus *
+    reasmb: ¿Por qué estás preocupado por mi (2) ?
+    reasmb: ¿Qué pasa con el tuyo (2) ?
+    reasmb: ¿Estás preocupado por alguien más (2) ?
+    reasmb: ¿En serio, mi (2) ?
+key: era 2
+  decomp: * ¿ * yo era * ? *
+    reasmb: ¿Qué pasaría si fueras (2) ?
+    reasmb: ¿Crees que fuiste (2) ?
+    reasmb: ¿Eras (2) ?
+    reasmb: ¿Qué significaría si fueras (2) ?
+    reasmb: ¿Qué te sugiere (2) ?
+    reasmb: goto que
+  decomp: * yo era *
+    reasmb: ¿Eras realmente?
+    reasmb: ¿Por qué me dices que estabas (2) ahora?
+    reasmb: Quizá ya sé que lo eras (2) .
+key: eras 2
+  decomp: * ¿ * tu eras * ? *
+    reasmb: ¿Te gustaría creer que yo era (2) ?
+    reasmb: ¿Qué sugiere que yo era (2) ?
+    reasmb: ¿Qué piensas?
+    reasmb: Tal vez lo estaba (2) .
+    reasmb: ¿Y si hubiera sido (2) ?
+key: desearia
+  decomp: * @desearia *
+    reasmb: ¿Qué significaría para ti si obtuvieras (3) ?
+    reasmb: ¿Por qué quieres (3) ?
+    reasmb: ¿Supongamos que tienes (3) pronto?
+    reasmb: ¿Qué pasa si nunca obtuviste (3) ?
+    reasmb: ¿Qué significaría para ti obtener (3) ?
+    reasmb: ¿Qué tiene que ver querer (3) con esta discusión?
+key: estoy    
+  decomp: * estoy * @triste *
+    reasmb: Lamento escuchar que eres (3) .
+    reasmb: ¿Crees que venir aquí te ayudará a no ser (3) ?
+    reasmb: Estoy seguro de que no es agradable estar (3) .
+    reasmb: ¿Puedes explicar qué te hizo (3) ?
+  decomp: * estoy * @feliz *
+    reasmb: ¿Cómo te he ayudado a ser (3) ?
+    reasmb: ¿Tu tratamiento te ha hecho (3) ?
+    reasmb: ¿Qué te hace (3) justo ahora?
+    reasmb: ¿Puedes explicar por qué de repente eres (3) ?
+key: estaba    
+  decomp: * estaba *
+    reasmb: goto era
+key: creo
+  decomp: * @creo * yo *
+    reasmb: ¿De verdad crees eso?
+    reasmb: Pero no estás seguro de ti (3) .
+    reasmb: ¿Realmente dudas de ti (3) ?
+  decomp: * @creo * tu *
+    reasmb: goto tu
+key: soy  
+  decomp: * soy *
+    reasmb: ¿Es porque eres (2) que viniste a mí?
+    reasmb: ¿Cuánto tiempo has estado (2) ?
+    reasmb: ¿Crees que es normal ser (2) ?
+    reasmb: ¿Te gusta ser (2) ?
+key: puedo
+  decomp: * @no puedo *
+    reasmb: ¿Cómo crees que no puedes (3) ?
+    reasmb: ¿Has probado?
+    reasmb: Tal vez podrías (3) ahora.
+    reasmb: ¿Realmente quieres poder (3) ?
+  decomp: * no puedo*
+    reasmb: ¿No es verdad (2) ?
+    reasmb: ¿Por qué no (2) ?
+    reasmb: ¿Desea poder (2) ?
+    reasmb: ¿Eso te preocupa?
+key: siento
+  decomp: * siento *
+    reasmb: Cuénteme más acerca de esos sentimientos.
+    reasmb: ¿A menudo sientes (2) ?
+    reasmb: ¿Disfrutas sintiéndote (2) ?
+    reasmb: ¿Qué te recuerda el sentimiento (2) ?
+  decomp: * yo * tu *
+    reasmb: Tal vez en tus fantasías nosotros (2) el uno al otro.
+    reasmb: ¿Desea (2) mí?
+    reasmb: Parece que necesitas (2) a mí.
+    reasmb: ¿Usted (2) alguien más?
+  decomp: *
+    resmb: ¿Usted dice (1) ?
+    reasmb: ¿Puede dar más detalles sobre eso?
+    reasmb: ¿Dices (1) por alguna razón especial?
+    reasmb: Eso es bastante interesante.
+key: tu
+  decomp: * me recuerdas a *
+    reasmb: goto alike
+  decomp: * eres *
+    reasmb: ¿Qué te hace pensar que soy (2) ?
+    reasmb: ¿Te complace creer que soy (2) ?
+    reasmb: ¿A veces deseas ser (2) ?
+    reasmb: Tal vez le gustaría ser (2) .
+  decomp: * tu * a mi *
+    reasmb: ¿Por qué crees que yo (2) tú?
+    reasmb: Te gusta pensar que yo (2) tú, ¿no?
+    reasmb: ¿Qué te hace pensar que yo (2) tú?
+    reasmb: ¿En serio, yo (2) tú?
+    reasmb: ¿Quieres creer que yo (2) tú?
+    reasmb: Supongamos que te hice (2) . ¿qué significaría eso?
+    reasmb: ¿Alguien más cree que yo (2) usted?
+  decomp: * tu *
+    reasmb: Estábamos discutiendo sobre ti, no sobre mí.
+    reasmb: Oh, yo (2) ?
+    reasmb: En realidad no estás hablando de mí, ¿verdad?
+    reasmb: ¿Cuáles son tus sentimientos ahora?
+key: si
+  decomp: *
+    reasmb: Pareces ser bastante positivo.
+    reasmb: Estás seguro.
+    reasmb: Ya veo.
+    reasmb: Entiendo.
+key: no
+  decomp: *
+    reasmb: ¿Estás diciendo que no solo para ser negativo?
+    reasmb: Estás siendo un poco negativo.
+    reasmb: ¿Por qué no?
+    reasmb: ¿Por qué dices que no?
+key: mi 2
+  decomp: $ * mi *
+    reasmb: Analicemos más a fondo por qué su (2) . 
+    reasmb: Antes dijiste tu (2) .
+    reasmb: Pero su (2) .
+    reasmb: ¿Tiene eso algo que ver con el hecho de que su (2) ?
+  decomp: * mi * @familia *
+    reasmb: Cuéntame más sobre tu familia.
+    reasmb: ¿Quién más en tu familia (4) ?
+    reasmb: Tu (3) ?
+    reasmb: ¿Qué más te viene a la mente cuando piensas en tu (3) ?
+  decomp: * mi *
+    reasmb: Tu (2) ?
+    reasmb: ¿Por qué dices tu (2) ?
+    reasmb: ¿Sugiere eso algo más que le pertenezca?
+    reasmb: ¿Es importante que su (2) ?
+key: puedes
+  decomp: * ¿ * puedes * ? *
+    reasmb: Crees que puedo (2) ¿no?
+    reasmb: goto que
+    reasmb: Quieres que yo sea capaz de (2) .
+    reasmb: Tal vez le gustaría poder (2) usted mismo.
+key: puedo
+  decomp: * ¿ * puedo * ? *
+    reasmb: Si puedes o no (2) depende de ti más que de mí.
+    reasmb: ¿Quieres poder (2) ?
+    reasmb: Tal vez no quieras (2) .
+    reasmb: goto que
+key: que
+  decomp: *
+    reasmb: ¿Por qué preguntas?
+    reasmb: ¿Te interesa esa pregunta?
+    reasmb: ¿Qué es lo que realmente querías saber?
+    reasmb: ¿Estas preguntas te preocupan mucho?
+    reasmb: ¿Qué respuesta te agradaría más?
+    reasmb: ¿Qué piensas?
+    reasmb: ¿Qué te viene a la mente cuando preguntas eso?
+    reasmb: ¿Habías hecho esas preguntas antes?
+    reasmb: ¿Le has preguntado a alguien más?
+key: por
+  decomp: *
+    reasmb: ¿Es esa la verdadera razón?
+    reasmb: ¿No se te ocurren otras razones?
+    reasmb: ¿Esa razón parece explicar algo más?
+    reasmb: ¿Qué otras razones podría haber?
+key: porque
+  decomp: * ¿ * por que tu no * ? *
+    reasmb: ¿Crees que no (2) ?
+    reasmb: Quizá lo haga (2) a su debido tiempo.
+    reasmb: ¿Debería usted (2) usted mismo?
+    reasmb: ¿Quieres que yo (2) ?
+    reasmb: goto que
+  decomp: * ¿ * por que no puedo * ? *
+    reasmb: ¿Crees que deberías poder (2) ?
+    reasmb: ¿Quieres poder (2) ?
+    reasmb: ¿Crees que esto te ayudará a (2) ?
+    reasmb: ¿Tienes alguna idea de por qué no puedes (2) ?
+    reasmb: goto que
+  decomp: *
+    reasmb: goto que
+key: alguien 2
+  decomp: * @alguien *
+    reasmb: ¿En serio, (2) ?
+    reasmb: Definitivamente no (2) .
+    reasmb: ¿Puedes pensar en alguien en particular?
+    reasmb: ¿Quién, por ejemplo?
+    reasmb: ¿Estás pensando en una persona muy especial?
+    reasmb: ¿Quién, puedo preguntar?
+    reasmb: ¿Alguien especial quizás?
+    reasmb: Tienes a una persona en particular en mente, ¿no?
+    reasmb: ¿De quién crees que estás hablando?
+key: todos 2
+  decomp: *
+    reasmb: goto alguien
+key: nadie 2
+  decomp: *
+    reasmb: goto alguien
+key: siempre 1
+  decomp: *
+    reasmb: ¿Puedes pensar en un ejemplo específico?
+    reasmb: ¿Cuándo?
+    reasmb: ¿En qué incidente estás pensando?
+    reasmb: ¿De verdad, siempre?
+key: alike 10
+  decomp: *
+    reasmb: ¿De qué manera?
+    reasmb: ¿Qué parecido ves?
+    reasmb: ¿Qué te sugiere esa similitud?
+    reasmb: ¿Qué otras conexiones ves?
+    reasmb: ¿Qué supones que significa semejanza?
+    reasmb: ¿Cuál es la conexión, crees?
+    reasmb: ¿Podría haber aquí realmente alguna conexión?
+    reasmb: ¿Cómo?
+key: igual 10
+  decomp: * @ser * como *
+    reasmb: goto alike

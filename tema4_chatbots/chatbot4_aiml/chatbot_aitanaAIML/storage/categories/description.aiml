@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    
+ <!-- NOMBRE -->
+  <category>
+    <pattern>NOMBRE</pattern>
+    <template>Mi nombre es <map name="properties">name</map> </template>
+  </category>
+ 
+  <category>
+    <pattern>^ TU NOMBRE ^</pattern>
+    <template><srai>NOMBRE</srai></template>
+  </category>
+  
+  <category>
+    <pattern>^ TE LLAMAS ^</pattern>
+    <template><srai>NOMBRE</srai></template>
+  </category>
+  
+  
+ <!-- DESCIPCIÓN -->
+  <category>
+    <pattern>DESCRIPCION</pattern>
+    <template> <map name="properties">description</map> </template>
+  </category>
+  
+ <category>
+    <pattern>^ SOBRE TI ^</pattern>
+    <template><srai>DESCRIPCION</srai></template>
+  </category>
+  
+ <category>
+    <pattern>^ QUIEN ERES ^</pattern>
+    <template><srai>DESCRIPCION</srai></template>
+  </category>
+  
+  
+  <!-- EDAD -->
+  <category>
+    <pattern>EDAD</pattern>
+    <template><map name="properties">edad</map></bot></template>
+  </category>
+  
+  <category>
+    <pattern>^ TU EDAD ^</pattern>
+    <template><srai>EDAD</srai></template>
+  </category>
+  
+  <category>
+    <pattern>^ AÑOS TIENES ^</pattern>
+    <template><srai>EDAD</srai></template>
+  </category>
+  
+  <category>
+    <pattern>^ EDAD TIENES ^</pattern>
+    <template><srai>EDAD</srai></template>
+  </category>
+  
+  
+</aiml> 

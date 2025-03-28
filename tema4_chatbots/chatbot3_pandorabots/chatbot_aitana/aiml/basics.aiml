@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    
+  <!-- DEFAULT --> 
+  <category>
+    <pattern>*</pattern>
+    <template>Hablame más de ti.</template>
+  </category> 
+    
+  <!-- HOLA -->
+  <category>
+    <pattern>HOLA</pattern>
+    <template>
+        <random>
+            <li>Hola a ti tambien.</li>
+            <li>Saludos.</li>
+            <li>¿Cómo estás?</li>
+            <li>hola.</li>
+        </random>
+    </template>
+  </category> 
+  
+  <category>
+    <pattern>SALUDOS</pattern>
+    <template><srai>HOLA</srai></template>
+  </category>
+  
+  <category>
+    <pattern>BUENOS DIAS</pattern>
+    <template><srai>HOLA</srai></template>
+  </category>
+   
+  <category>
+    <pattern>BUENAS ^</pattern>
+    <template><srai>HOLA</srai></template>
+  </category>
+
+  <!-- ADIOS -->
+  <category>
+    <pattern>ADIOS</pattern>
+    <template>
+        <random>
+            <li>Hasta luego.</li>
+            <li>Ha sido un placer.</li>
+            <li>Espero volver a verte pronto.</li>
+            <li>Adios.</li>
+        </random>
+    </template>
+  </category> 
+  
+  <category>
+    <pattern>CHAO</pattern>
+    <template><srai>ADIOS</srai></template>
+  </category>
+  
+  <category>
+    <pattern>HSATA LUEGO</pattern>
+    <template><srai>ADIOS</srai></template>
+  </category>
+  
+
+  <!-- COMO ESTAS? -->
+  <category>
+    <pattern>COMO ESTAS ^</pattern>
+    <template>
+        <random>
+            <li>Bien.</li>
+            <li>Bastante bien, gracias por preguntar.</li>
+            <li>Pordría estar mejor.</li>
+            <li>Bueno, no sabría que responderte.</li>
+        </random>
+    </template>
+  </category> 
+  
+  <category>
+    <pattern>COMO TE ENCUENTRAS ^</pattern>
+    <template><srai>COMO ESTAS ^</srai></template>
+  </category>
+  
+  <category>
+    <pattern>COMO TE SIENTES ^</pattern>
+    <template><srai>COMO ESTAS ^</srai></template>
+  </category>
+  
+  
+  <!-- CUAL ES MI NOMBRE | Mi nombre es Juan Carlos -->
+  <category>
+      <pattern>^ MI NOMBRE ES <set>nombre</set> ^</pattern>
+      <template>
+        <think>
+          <set var="nombre"><star index="2"/></set>
+       
+          <set var="pattern1">^ COMO ME LLAMO ^</set>
+          <set var="pattern2">^ CUAL ES MI NOMBRE ^</set>
+          <set var="respuesta">Tu nombre es <get var="nombre"/>.</set>
+      </think>
+        De acuerdo, intentare recordarlo :)
+      <learn>
+          <category>
+            <pattern><eval><get var="pattern1"/></eval></pattern>
+            <template><eval><get var="respuesta"/></eval></template>
+          </category>
+          <category>
+            <pattern><eval><get var="pattern2"/></eval></pattern>
+            <template><eval><get var="respuesta"/></eval></template>
+          </category>
+        </learn>
+      </template>
+  </category>
+ 
+ 
+   <category>
+    <pattern>^ ME LLAMO ^</pattern>
+    <template><srai><star index="1"/> MI NOMBRE ES <star index="2"/></srai></template>
+  </category>
+  
+ 
+  
+    <!-- CUAL ES MI EDAD | tengo 18 años -->
+  <category>
+      <pattern>^ TENGO <set>nombrenumero</set> AÑOS</pattern>
+      <template>
+        <think>
+          <set var="nombrenumero"><star index="2"/></set>
+       
+          <set var="pattern1">CUANTOS AÑOS TENGO ^</set>
+          <set var="pattern2">CUAL ES MI EDAD ^</set>
+          <set var="respuesta">Tienes <get var="nombrenumero"/> años.</set>
+      </think>
+        De acuerdo, intentare recordarlo :)
+      <learn>
+            <category>
+              <pattern><eval><get var="pattern1"/></eval></pattern>
+              <template><eval><get var="respuesta"/></eval></template>
+            </category>
+            <category>
+              <pattern><eval><get var="pattern2"/></eval></pattern>
+              <template><eval><get var="respuesta"/></eval></template>
+            </category>
+        </learn>
+      </template>
+  </category>
+  
+  
+</aiml>

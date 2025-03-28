@@ -1,0 +1,25 @@
+{
+    "folders": [
+        {
+            "path": "tema0_Introduccion"
+        },
+        {
+            "path": "tema1_sistemasMultiagentes"
+        },
+        {
+            "path": "tema2_aprendizajeAutomatico"
+        },
+        {
+            "path": "tema3_procesamientoDeLenguajeNatural"
+        },
+        {
+            "path": "tema4_chatbots"
+        },
+        {
+            "path": "practicaFinal"
+        },
+        {
+            "path": "."
+        },
+    ]
+}

@@ -1,0 +1,30 @@
+Initiating Console Client...
+No bot root argument set, defaulting to [../../config/xnix]
+Healthcheck now running as part of REST Service...
+None, App: vNone Grammar vNone, initiated None
+Hi, how can I help you today?
+>>> hola
+Saludos.
+>>> como estas?
+Bastante bien, gracias por preguntar.
+>>> mi nombre es carlos
+De acuerdo, intentare recordarlo:).
+>>> mi color favorito es el verde
+De acuerdo, intentare recordarlo:).
+>>> creo que es un color muy vivo
+Sorry, I don't have an answer for that!
+>>> mu hermano dice que prefiere el azul 
+Sorry, I don't have an answer for that!
+>>> mi hermano dice que prefiere el azul
+De acuerdo, intentare recordarlo:).
+>>> me gusta jugar a videlojuegos
+Sorry, I don't have an answer for that!
+>>> a mi me gusta jugar a videojuegos
+De acuerdo, intentare recordarlo:).
+>>> que le gusta a mi?
+Sorry, I don't have an answer for that!
+>>> a quien le gusta jugar a videojuegos?
+Sorry, I don't have an answer for that!
+>>> adios
+Ha sido un placer.
+>>> ^CSo long, and thanks for the fish!
